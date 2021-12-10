@@ -1,0 +1,181 @@
+﻿@page "/chitietsanpham/{id}"
+@inject R4CloThes.Client.Helpers.IAPIHelper _apihelper
+@inject ILocalStorageService localStorage
+@inject ISnackbar _snackbar
+@inject ICartService _cartService
+
+    <style>
+        import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+        h1 {
+            font-weight: normal;
+            font-size: 4em;
+            font-family: 'Raleway', sans-serif;
+            margin: 0 auto;
+            margin-top: 30px;
+            width: 500px;
+            color: #F90;
+            text-align: center;
+        }
+
+        /* Animation webkit */
+        -webkit-keyframes myfirst {
+            0%
+        }
+
+        {
+            margin-left: -235px
+        }
+
+        90% {
+            margin-left: 100%;
+        }
+
+        100% {
+            margin-left: 100%;
+        }
+
+
+        /* Animation */
+        keyframes myfirst {
+            0%
+        }
+
+        {
+            margin-left: -235px
+        }
+
+        70% {
+            margin-left: 100%;
+        }
+
+        100% {
+            margin-left: 100%;
+        }
+
+
+        label, input, textarea {
+            display: block;
+        }
+
+        input, textarea {
+            width: 500px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            padding: 10px;
+            font-family: 'Sniglet', cursive;
+            font-size: 1em;
+            color: #676767;
+            transition: border 0.5s;
+            -webkit-transition: border 0.5s;
+            -moz-transition: border 0.5s;
+            -o-transition: border 0.5s;
+            border: solid 3px #98d4f3;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #e58f0e;
+            }
+
+        label {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .formgroup, .formgroup-active, .formgroup-error {
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 10.5%;
+            transition: background-image 0.7s;
+            -webkit-transition: background-image 0.7s;
+            -moz-transition: background-image 0.7s;
+            -o-transition: background-image 0.7s;
+            width: 566px;
+            padding-top: 2px;
+        }
+
+        .formgroup {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
+        }
+
+        .formgroup-active {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
+        }
+
+        .formgroup-error {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
+            color: red;
+        }
+    </style>
+    <div>
+        <div class="row  mt-50">
+            <div class="col-12 col-lg-7 ">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-target="#product_details_slider" data-slide-to="0";>
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="gallery_img">
+                                    <img class="d-block w-100" style="width:200px; height: 500px" src="https://res.cloudinary.com/r4clothes/image/upload/@sanPham.Hinh" alt="imgProduct">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                    <!-- Product Meta Data -->
+                    <div class="product-meta-data">
+                        <div class="line"></div>
+                        <p class="product-price">Giảm giá: @sanPham.Giamgia</p>
+                        <p class="product-price">Giá: @SauGiamGia</p>
+                        <a>
+                            <h6>@sanPham.Tensanpham</h6>
+                        </a>
+                        <!-- Ratings & Review -->
+                        <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                            <MudCardActions>
+                                <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
+                                <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+                            </MudCardActions>
+                        </div>
+                        <!-- Avaiable -->
+                    </div>
+                    <div class="short_overview my-5">
+                        <p>Một vài điểm nổi bật của sản phẩm</p>
+                    </div>
+                    <!-- Add to Cart Form -->
+                        <div class="cart-btn d-flex mb-50">
+                            <p>Số Lượng</p>
+                            <div class="quantity ml-3">
+                                <input type="number" class="qty-text w-100" id="qty" step="1" min="1" max="300" name="quantity" @bind="@soLuongMua">
+                            </div>
+                        </div>
+                        <button type="submit" name="addtocart" class="btn amado-btn" @onclick="AddToCart">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+        <div class="row m-sm-2 ml-50 ">
+            <div id="form">
+                <form id="waterform" method="post">
+                    <div class="formgroup" id="message-form">
+                        <label for="message">Nhận Xét</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+
+                    <input class="mt-2" type="submit" value="Góp ý" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
