@@ -1251,19 +1251,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NgocThien\\.nuget\\packages\\": {}
+    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\repos\\R4Clothes.Server\\R4Clothes.Server\\R4Clothes.Server.csproj",
+      "projectUniqueName": "E:\\R402\\sonclient\\R4Clothes.Server\\R4Clothes.Server.csproj",
       "projectName": "R4Clothes.Server",
-      "projectPath": "F:\\repos\\R4Clothes.Server\\R4Clothes.Server\\R4Clothes.Server.csproj",
-      "packagesPath": "C:\\Users\\NgocThien\\.nuget\\packages\\",
-      "outputPath": "F:\\repos\\R4Clothes.Server\\R4Clothes.Server\\obj\\",
+      "projectPath": "E:\\R402\\sonclient\\R4Clothes.Server\\R4Clothes.Server.csproj",
+      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+      "outputPath": "E:\\R402\\sonclient\\R4Clothes.Server\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\NgocThien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1331,7 +1338,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
