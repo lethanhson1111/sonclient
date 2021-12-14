@@ -4,125 +4,81 @@
 @inject ILocalStorageService localStorage
 @inject NavigationManager nav
 
-    <style>
-        .get-in-touch {
-            max-width: 800px;
-            margin: 50px auto;
-            position: relative;
-        }
+<div style="max-width: 600px;">
+    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudGrid>
+                <MudItem>
+                    <MudCardContent>
+                        <MudGrid>
+                            <MudItem xs="12" sm="3">
+                                <MudContainer>
+                                    <MudCardMedia Image="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" Style="height:70px; width:70px;" Class="ma-2" />
+                                </MudContainer>
+                            </MudItem>
+                            <MudItem xs="12" sm="5">
+                                <MudTextField Label="Họ Tên Khách Hàng" Class="mt-3"
+                                              @bind-Value="model.Username" For="@(() => model.Username)" />
+                            </MudItem>
+                            <MudItem xs="12" sm="4">
+                                <MudTextField Label="Email" Class="mt-3"
+                                              @bind-Value="model.Username" For="@(() => model.Username)" />
+                            </MudItem>
+                        </MudGrid>
+                        <MudGrid>
+                            <MudItem xs="12" sm="6">
+                                <MudRadioGroup Label="Giới tính" @bind-SelectedOption="Dense_Radio">
+                                    <MudRadio Option="true" Color="Color.Primary" Dense="true">Nam</MudRadio>
+                                    <MudRadio Option="false" Color="Color.Secondary" Dense="false">Nữ</MudRadio>
+                                </MudRadioGroup>
+                            </MudItem>
+                            <MudItem xs="12" sm="6">
+                                <MudItem xs="12">
+                                    <MudDatePicker Label="Ngày Sinh" @bind-Date="date" ReadOnly="@readOnly" />
+                                </MudItem>
+                            </MudItem>
+                        </MudGrid>
+                        <MudTextField Label="Địa Chỉ" Class="mt-3"
+                                      @bind-Value="model.Email" For="@(() => model.Email)" />
+                        <MudTextField Label="Số Điện Thoại" Class="mt-3"
+                                      @bind-Value="model.Email" For="@(() => model.Email)" />
+                        <MudTextField Label="Trạng Thái" Class="mt-3"
+                                      @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+                    </MudCardContent>
+                </MudItem>
+            </MudGrid>
+        </MudCard>
+    </EditForm>
+</div>
+@code {
+    RegisterAccountForm model = new RegisterAccountForm();
+    bool success;
 
-            .get-in-touch .title {
-                text-align: center;
-                text-transform: uppercase;
-                letter-spacing: 3px;
-                font-size: 3.2em;
-                line-height: 48px;
-                padding-bottom: 48px;
-                background: -moz-linear-gradient(left,#f4524d 0%,#000 100%) !important;
-                background: -webkit-linear-gradient(left,#f4524d 0%,#000 100%) !important;
-                background: linear-gradient(to right,#f4524d 0%,#000 100%) !important;
-                -webkit-background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
-            }
+    public class RegisterAccountForm
+    {
+        public string Username { get; set; }
 
-        .contact-form .form-field {
-            position: relative;
-            margin: 32px 0;
-        }
+        public string Email { get; set; }
 
-        .contact-form .input-text {
-            display: block;
-            width: 100%;
-            height: 36px;
-            border-width: 0 0 2px 0;
-            border-color: #5543ca;
-            font-size: 18px;
-            line-height: 26px;
-            font-weight: 400;
-        }
+        public string Password { get; set; }
 
-            .contact-form .input-text:focus {
-                outline: none;
-            }
+        public string Password2 { get; set; }
+    }
 
-                .contact-form .input-text:focus + .label,
-                .contact-form .input-text.not-empty + .label {
-                    -webkit-transform: translateY(-24px);
-                    transform: translateY(-24px);
-                }
+    private void OnValidSubmit(EditContext context)
+    {
+        success = true;
+        StateHasChanged();
+    }
 
-        .contact-form .label {
-            position: absolute;
-            left: 20px;
-            bottom: 11px;
-            font-size: 18px;
-            line-height: 26px;
-            font-weight: 400;
-            cursor: text;
-            transition: -webkit-transform .2s ease-in-out;
-            transition: transform .2s ease-in-out;
-            transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
-        }
-
-        .contact-form .submit-btn {
-            display: inline-block;
-            background-color: #000;
-            background-image: linear-gradient(125deg,#a72879,#064497);
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 16px;
-            padding: 8px 16px;
-            border: none;
-            width: 200px;
-            cursor: pointer;
-        }
-    </style>
-
-    <div class="cart-table-area">
-        <section class="get-in-touch">
-            <h1 class="title">Thông tin</h1>
-            <form class="contact-form row">
-                <div class="form-field col-lg-6">
-                    <InputFile id="fileInput" OnChange="UploadFiles" hidden />
-                    <MudButton HtmlTag="label"
-                               Variant="Variant.Filled"
-                               Color="Color.Primary"
-                               StartIcon="@Icons.Filled.CloudUpload"
-                               for="fileInput">
-                        Upload Files
-                    </MudButton>
-                </div>
-                <div class="form-field col-lg-6">
-                    <input id="name" class="input-text js-input" type="text" @bind-value="@kh.Tenkhachhang" required>
-                    <label class="label" for="name">Họ và Tên</label>
-                </div>
-                <div class="form-field col-lg-6 ">
-                    <input id="email" class="input-text js-input" type="email" @bind-value="@kh.Email" required>
-                    <label class="label" for="email">E-mail</label>
-                </div>
-                <div class="form-field col-lg-6 ">
-                    <input id="phone" class="input-text js-input" type="text" @bind-value="@kh.Sodienthoai" required>
-                    <label class="label" for="phone">Số điện thoại</label>
-                </div>
-                <div class="form-field col-lg-6 ">
-                    <input id="data" class="input-text js-input" type="date" @bind-value="@kh.Ngaysinh" required>
-                    <label class="label" for="data"></label>
-                </div>
-                <div class="form-field col-lg-6 ">
-                    <input id="gioitinh" class="input-text js-input" type="text" @bind-value="@kh.Gioitinh" required>
-                    <label class="label" for="gioitinh">Giới tính</label>
-                </div>
-                <div class="form-field col-lg-6 ">
-                    <input id="diachi" class="input-text js-input" type="text" @bind-value="@kh.Diachi" required>
-                    <label class="label" for="diachi">Địa chỉ</label>
-                </div>
-                <div class="form-field col-lg-12">
-                    <input class="submit-btn" type="submit" value="Submit">
-                </div>
-                <div class="form-field col-lg-12">
-                    <p>Url tra ve: @url</p>
-                </div>
-            </form>
-        </section>
-    </div>
+}
+@code {
+    public bool Dense_Radio { get; set; } = true;
+}
+@code {
+    MudDatePicker _picker;
+    DateTime? date = DateTime.Today;
+    private bool autoClose;
+    private bool readOnly;
+}

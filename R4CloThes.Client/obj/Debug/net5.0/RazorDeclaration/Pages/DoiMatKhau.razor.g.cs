@@ -132,6 +132,9 @@ using R4CloThes.Client.Helpers;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _Nav { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILocalStorageService _LocalService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAPIHelper _IAPIHelper { get; set; }
     }
 }
 #pragma warning restore 1591

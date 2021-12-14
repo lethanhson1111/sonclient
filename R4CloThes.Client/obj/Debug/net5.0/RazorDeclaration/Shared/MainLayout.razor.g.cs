@@ -139,7 +139,7 @@ using R4CloThes.Client.Models.ViewModel;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 167 "F:\repos\R4Clothes.Server\R4CloThes.Client\Shared\MainLayout.razor"
+#line 208 "F:\repos\R4Clothes.Server\R4CloThes.Client\Shared\MainLayout.razor"
       
     public int count = 0;
 

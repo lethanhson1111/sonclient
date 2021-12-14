@@ -132,6 +132,52 @@ using R4CloThes.Client.Helpers;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 54 "F:\repos\R4Clothes.Server\R4CloThes.Client\Pages\ThongTinKhachHang.razor"
+       
+    RegisterAccountForm model = new RegisterAccountForm();
+    bool success;
+
+    public class RegisterAccountForm
+    {
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string Password2 { get; set; }
+    }
+
+    private void OnValidSubmit(EditContext context)
+    {
+        success = true;
+        StateHasChanged();
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 76 "F:\repos\R4Clothes.Server\R4CloThes.Client\Pages\ThongTinKhachHang.razor"
+       
+    public bool Dense_Radio { get; set; } = true;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 79 "F:\repos\R4Clothes.Server\R4CloThes.Client\Pages\ThongTinKhachHang.razor"
+       
+    MudDatePicker _picker;
+    DateTime? date = DateTime.Today;
+    private bool autoClose;
+    private bool readOnly;
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager nav { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILocalStorageService localStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private R4CloThes.Client.Helpers.IUploadImage _uploadImage { get; set; }

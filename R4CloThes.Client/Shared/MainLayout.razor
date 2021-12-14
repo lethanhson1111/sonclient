@@ -51,26 +51,22 @@
                 <!-- Amado Nav -->
                 <nav class="amado-nav">
                     <ul>
-                        <li class="active"><a href="/">Trang Chủ</a></li>
-                        <li><a class="active" href="/sanpham">Sản Phẩm</a></li>
-                        
-                            <li><a class="active" href="/login">Đăng Nhập</a></li>
-                            <li><a class="active" href="/Dangky">Đăng Ký</a></li>
-                        
-                        <li><a class="active" href="/About">Giới Thiệu</a></li>
-                        <li><a class="active" href="/quenmk">Quên Mật Khẩu</a></li>
-                       
-                            <li><a class="active" href="/donhang">Đơn Hàng</a></li>
-                            <li><a class="active" href="/thongtin">Thông Tin Khách Hàng</a></li>
-                            <li><a class="active" href="/doimk">Đổi Mật Khẩu</a></li>
-                            <li><a class="active" href="/logout">Đăng xuất</a></li>
-                       
+                        <MudNavLink Href="/" Icon="@Icons.Filled.Home" IconColor="Color.Warning">Trang Chủ</MudNavLink>
+                        <MudNavLink Href="/sanpham" class="active" Icon="@Icons.Rounded.FormatListBulleted" IconColor="Color.Warning">Sản Phẩm</MudNavLink>
+                        <MudNavLink Href="/About" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Giới Thiệu</MudNavLink>
+                        <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
+                        <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin Khách Hàng</MudNavLink>
+                        <MudNavLink Href="/chitietsanpham" class="active" Icon="@Icons.Filled.Details" IconColor="Color.Warning">Chi tiết</MudNavLink>
+                        <MudNavGroup Title="Đăng nhập" Icon="@Icons.Filled.AccountCircle" Expanded="true">
+                            <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
+                            <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
+                            <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
+                            <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
+                            <MudNavLink Href="/logout" Icon="@Icons.Filled.Block" IconColor="Color.Warning">Đăng xuất</MudNavLink>
+                        </MudNavGroup>
+                        <MudNavLink Href="/cart" Icon="@Icons.Filled.ShoppingCart" IconColor="Color.Warning">Giỏ hàng<span>(@count)</span></MudNavLink>
                     </ul>
                 </nav>
-                <!-- Cart Menu -->
-                <div class="cart-fav-search mb-100">
-                    <a href="/cart" class="cart-nav"><img src="template/img/core-img/cart.png" alt="cart"> Cart <span>(@count)</span></a>
-                </div>
                 <!-- Social Button -->
                 <div class="social-info d-flex justify-content-between">
                     <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
@@ -134,23 +130,68 @@
                             <nav class="navbar navbar-expand-lg justify-content-end">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
-                                        </li>
-                                    </ul>
+                                    <div class="container text-center text-md-start mt-5">
+                                        <!-- Grid row -->
+                                        <div class="row mt-3">
+                                            <!-- Grid column -->
+                                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                                                <!-- Content -->
+                                                <h6 class="text-light fw-bold">Giới Thiệu</h6>
+                                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                                    style="width: 60px; background-color: mediumspringgreen; height: 2px" />
+                                                <p class="text-light">
+                                                    Thời trang là một sân chơi cho đến một độ tuổi nhất định. Nhưng sau đó bạn phải tìm ra chữ ký của riêng bạn và phong cách của riêng bạn
+                                                </p>
+                                            </div>
+                                            <!-- Grid column -->
+                                            <!-- Grid column -->
+                                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                                <!-- Links -->
+                                                <h6 class="text-light fw-bold">Products</h6>
+                                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                                    style="width: 60px; background-color: mediumspringgreen; height: 2px" />
+                                                <p>
+                                                    <a href="#!" class="text-light">Sản phẩm </a>
+                                                </p>
+                                                <p>
+                                                    <a href="#!" class="text-light">Giỏ hàng </a>
+                                                </p>
+                                                <p>
+                                                    <a href="#!" class="text-light">Hóa Đơn</a>
+                                                </p>
+
+                                            </div>
+                                            <!-- Grid column -->
+                                            <!-- Grid column -->
+                                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                                                <!-- Links -->
+                                                <h6 class="text-light fw-bold">Useful links</h6>
+                                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                                    style="width: 60px; background-color: mediumspringgreen; height: 2px" />
+                                                <p>
+                                                    <a href="#!" class="text-light">Tài khoản</a>
+                                                </p>
+                                                <p>
+                                                    <a href="#!" class="text-light">Đổi mật khẩu </a>
+                                                </p>
+
+                                            </div>
+                                            <!-- Grid column -->
+                                            <!-- Grid column -->
+                                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 ">
+                                                <!-- Links -->
+                                                <h6 class="text-light fw-bold">Contact</h6>
+                                                <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                                    style="width: 60px; background-color: mediumspringgreen; height: 2px" />
+                                                <p class="text-light"> Công Viên Phần Mềm Quang Trung, Quận 12,Tp HCM</p>
+                                                <p class="text-light">R4Clothes@gmail.com</p>
+                                                <p class="text-light">0989898985</p>
+
+                                            </div>
+                                            <!-- Grid column -->
+                                        </div>
+                                        <!-- Grid row -->
+                                    </div>
                                 </div>
                             </nav>
                         </div>
@@ -159,7 +200,7 @@
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area End ##### -->
+   
 </div>
 <MudThemeProvider />
 <MudDialogProvider />

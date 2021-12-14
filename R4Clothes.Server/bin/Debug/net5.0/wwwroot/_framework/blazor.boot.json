@@ -197,11 +197,11 @@
       "mscorlib.dll": "sha256-9AZ7YsJz\/p2gr4E0EQXdHBqwDxoXqtzxhqC6aRsa2K8=",
       "netstandard.dll": "sha256-yOOty6BTX3e57YAEHK5a4nku\/lj0vi7jg\/eQZAjbDQk=",
       "System.Private.CoreLib.dll": "sha256-rraBQp6NevIQiELPVfDFDl5pv9QVJqCiZhB5bkpiZ88=",
-      "R4Clothes.Server.dll": "sha256-q\/v+sXEGYF4I1DJUS4U7d1ETTCpvtF3S8Kddc9sIo0U="
+      "R4Clothes.Server.dll": "sha256-feqDy1IE3KsrrMqngAtI04nwOGE\/LzI+gfrf5l7jhdk="
     },
     "lazyAssembly": null,
     "pdb": {
-      "R4Clothes.Server.pdb": "sha256-xczZKeT689gmaNHaB08aFzCLZlZLwbBPqsJlQRbhPFg="
+      "R4Clothes.Server.pdb": "sha256-CuB0WtKKcBoC6sBCutvDBP5eS8e71iihjWKyAl9vChg="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",
