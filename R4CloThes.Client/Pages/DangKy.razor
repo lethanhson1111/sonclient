@@ -1,4 +1,6 @@
 ﻿@page "/Dangky"
+@inject IAPIHelper _apiHelper
+@inject ISnackbar _snackBar
 
 <style>
     
@@ -35,26 +37,35 @@ padding : 50px 0;
                     <div class="login-form">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-uppercase">Họ và tên</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" @bind="@khachhang.Tenkhachhang" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="text-uppercase" >Username</label>
-                            <input type="text" class="form-control" placeholder="" @bind="@email">
+                            <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+                            <input type="text" class="form-control" placeholder="" @bind="@khachhang.Email">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-                            <input type="password" class="form-control" placeholder="" @bind="@password">
+                            <label class="control-label">Số điện thoại</label>
+                            <input class="form-control" @bind="@khachhang.Sodienthoai" type="password" />
+                        </div>
+                        <div class="form-check">
+                                <MudDatePicker Label="Ngay sinh" Editable="true" @bind-Date="date" Placeholder="Select Date" />
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Ngày sinh</label>
-                            <input class="form-control" type="date" />
+                            <label for="exampleInputPassword1" class="text-uppercase">Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="" @bind="@khachhang.Matkhau">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Nhập lại mật khẩu</label>
+                            <input class="form-control" @bind="@confirmpwd" type="password" />
                         </div>
                         <div class="form-check">
                             <button class="btn btn-login float-right" @onclick="@Regis">Đăng Ký</button>
                         </div>
+                        <div class="form-check">
 
+                        </div>
+                        <h6 class="text-danger">@info</h6>
                     </div>
-                    <div class="copy-text">Created with <i class="fa fa-heart"></i> by <a href="http://grafreez.com">Grafreez.com</a></div>
                 </div>
                 <div class="col-md-8 banner-sec">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -68,4 +79,3 @@ padding : 50px 0;
         </div>
     </section>
 </div>
-<h1>Loio : @res</h1>

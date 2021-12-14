@@ -132,6 +132,8 @@ using R4CloThes.Client.Helpers;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ISnackbar _snackBar { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAPIHelper _apiHelper { get; set; }
     }
 }
 #pragma warning restore 1591
