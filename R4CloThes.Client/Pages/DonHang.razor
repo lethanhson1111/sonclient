@@ -1,14 +1,14 @@
-﻿
-@inject HttpClient Client
-@page "/donhang"
+﻿@page "/donhang"
+@inject ILocalStorageService localStorage
+@inject ISnackbar _snackbar
+@inject ICartService _cartService
+@inject NavigationManager nav
+@inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
 
-@if (true)
-{
-    <p>Bạn hãy <a href="/login">đăng nhập</a> để sử dụng tính năng này</p>
-}
-else
-{
-    <style>
+
+
+
+    @*<style>
         .product-name {
             float: left;
             width: 20%;
@@ -208,31 +208,33 @@ else
             width: 70px;
         }
         }
-    </style>
+    </style>*@
     <div class="cart-table-area mt-100">
 
         <div class="column-labels">
-            <label class="product-name">Khách Hàng</label>
+            <label class="product-name">Mã hóa đơn</label>
             <label class="product-ngaydat">Ngày Đặt</label>
             <label class="product-trangthai">Trạng Thái</label>
             <label class="product-removal">Chi Tiết</label>
             <label class="product-line-price">Tổng Tiền</label>
         </div>
 
-        <div class="product">
-            <div class="product-name">
-                <div class="product-title"> Quần áo đẹp</div>
+        @foreach (var item in hoadon)
+        {
+            <div class="product">
+                <div class="product-name">
+                    <div class="product-title">@item.Mahoadon</div>
+                </div>
+                <div class="product-ngaydat">
+                    <div class="product-title"> @item.Ngaydat</div>
+                </div>
+                <div class="product-trangthai">
+                    <div class="product-title">@item.Trangthai</div>
+                </div>
+                <div class="product-removal">
+                    <a class="btn btn-info product-title" href="/chitietdonhang/@item.Mahoadon">Chi Tiết</a>
+                </div>
+                <div class="product-line-price">@item.Tongtien</div>
             </div>
-            <div class="product-ngaydat">
-                <div class="product-title"> 25/11/2021</div>
-            </div>
-            <div class="product-trangthai">
-                <div class="product-title"> Mới Đặt</div>
-            </div>
-            <div class="product-removal">
-                <a class="btn btn-info product-title" href="/chitietdonhang">Chi Tiết</a>
-            </div>
-            <div class="product-line-price">25.98</div>
-        </div>
+        }
     </div>
-}

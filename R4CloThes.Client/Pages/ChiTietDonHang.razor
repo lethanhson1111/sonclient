@@ -1,7 +1,11 @@
-﻿@inject HttpClient Client
-@page "/chitietdonhang"
-@inject ILocalStorageService localStorage
+﻿
+@page "/chitietdonhang/{id}"
 
+@inject ILocalStorageService localStorage
+@inject ISnackbar _snackbar
+@inject ICartService _cartService
+@inject NavigationManager nav
+@inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
 <style>
     .product-image {
         float: left;
@@ -12,6 +16,7 @@
         float: left;
         width: 15%;
     }
+
     .product-day {
         float: left;
         width: 15%;
@@ -207,7 +212,7 @@
     }
     }
 </style>
-<div class="cart-table-area mt-100">
+<!--<div class="cart-table-area mt-100">
 
     <div class="column-labels">
         <label class="product-image">Khách Hàng</label>
@@ -217,7 +222,22 @@
         <label class="product-line-price">Tổng TIền</label>
     </div>
 
-    <div class="product">
+    @foreach (var item in sanPhamCTs)
+    {
+        <div class="product">
+            <div class="product-name">
+                <div class="product-title">@item.TenSanPham</div>
+            </div>
+            <div class="product-ngaydat">
+                <div class="product-title"> @item.Hinh</div>
+            </div>
+            <div class="product-trangthai">
+                <div class="product-title">@item.Gia</div>
+            </div>
+            <div class="product-line-price">@item.SoLuongMua</div>
+        </div>
+    }-->
+@*<div class="product">
         <div class="product-image">
             <img src="https://anhdepbonphuong.com/wp-content/uploads/2016/12/hinh-nen-dep-cho-may-tinh-nature-wallpapers-nature-wallpaper-latest-beautiful-wallpapers.jpg" />
 
@@ -230,5 +250,26 @@
         </div>
         <div class="product-day">24/11/2021</div>
         <div class="product-line-price">25.98</div>
-    </div>
-</div>
+    </div>*@
+<!--</div>-->
+<MudTable Items="@sanPhamCTs">
+    <HeaderContent>
+
+        <MudTh>Tên Sản Phẩm </MudTh>
+        <MudTh>Hình</MudTh>
+        <MudTh>Số Lượng </MudTh>
+        <MudTh> Giá</MudTh>
+
+    </HeaderContent>
+
+    <RowTemplate>
+
+        <MudTd DataLabel="Maloai">@context.TenSanPham</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Hinh</MudTd>
+        <MudTd DataLabel="Tenloai">@context.SoLuongMua</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Gia</MudTd>
+
+
+    </RowTemplate>
+  
+</MudTable>

@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\R402\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj": {}
+    "D:\\trinhduyet\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj": {}
   },
   "projects": {
-    "E:\\R402\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj": {
+    "D:\\trinhduyet\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\R402\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj",
+        "projectUniqueName": "D:\\trinhduyet\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj",
         "projectName": "R4CloThes.Client",
-        "projectPath": "E:\\R402\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\R402\\sonclient\\R4CloThes.Client\\obj\\",
+        "projectPath": "D:\\trinhduyet\\sonclient\\R4CloThes.Client\\R4CloThes.Client.csproj",
+        "packagesPath": "C:\\Users\\VT-BAOAN\\.nuget\\packages\\",
+        "outputPath": "D:\\trinhduyet\\sonclient\\R4CloThes.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\VT-BAOAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

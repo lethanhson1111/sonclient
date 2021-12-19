@@ -1,0 +1,32 @@
+﻿
+<h3>Yeuthich</h3>
+@page "/Yeuthich"
+@inject ILocalStorageService localStorage
+@inject ISnackbar _snackbar
+@inject ICartService _cartService
+@inject NavigationManager nav
+@inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
+<MudTable Items="@sanPhams">
+    <HeaderContent>
+
+        <MudTh>Tên Sản Phẩm </MudTh>
+        <MudTh>Hình</MudTh>
+        <MudTh>Số Lượng </MudTh>
+        <MudTh> Giá</MudTh>
+
+    </HeaderContent>
+
+    <RowTemplate>
+
+        <MudTd DataLabel="Maloai">@context.Tensanpham</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Hinh</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Soluong</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Gia</MudTd>
+
+
+    </RowTemplate>
+
+</MudTable>
+@code {
+
+}
