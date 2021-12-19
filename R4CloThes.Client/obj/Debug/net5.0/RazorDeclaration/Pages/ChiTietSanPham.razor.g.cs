@@ -124,7 +124,7 @@ using R4CloThes.Client.Helpers;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/chitietsanpham")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/chitietsanpham/{id}")]
     public partial class ChiTietSanPham : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

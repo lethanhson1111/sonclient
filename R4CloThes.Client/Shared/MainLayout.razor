@@ -4,9 +4,75 @@
 @using R4CloThes.Client.Models.ViewModel
 @inject ICartService cartService
 @implements IDisposable
+<style>
+    .coler {
+        background-color: #f9c990;
+    }
 
+    .coler-2 {
+        background-color: #e5b888;
+    }
+
+    .d-block {
+        width: 2000px;
+        height: 400px;
+    }
+
+    .d-block2 {
+        flex: 0 0 250px;
+        width: 152px;
+        max-width: 250px;
+        height:1200px;
+    }
+</style>
 
 <div class="page">
+    <nav class="coler navbar  navbar-expand-lg navbar-light">
+        <div class="logo">
+            <a href="index.html"><img src="template/img/core-img/logo.png" alt=""></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
+                <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
+            </ul>
+        </div>
+    </nav>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../images/ga2.jpg" class="d-block" alt="...">
+            </div>
+        </div>
+    </div>
+    <nav class="coler-2 navbar navbar-expand-lg navbar-light ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ml-15">
+                <MudNavLink Href="/" Icon="@Icons.Filled.Home" IconColor="Color.Warning">Trang Chủ</MudNavLink>
+                <MudNavLink Href="/About" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Giới Thiệu</MudNavLink>
+                <MudNavLink Href="/sanpham" class="active" Icon="@Icons.Rounded.FormatListBulleted" IconColor="Color.Warning">Sản Phẩm</MudNavLink>
+                <MudNavLink Href="/GiamGia" class="active" Icon="@Icons.Rounded.FormatListBulleted" IconColor="Color.Warning">Giảm giá</MudNavLink>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
+                <MudNavLink Href="/cart" Icon="@Icons.Filled.ShoppingCart" IconColor="Color.Warning">Giỏ hàng<span>(@count)</span></MudNavLink>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Thông tin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin</MudNavLink>
+                        <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
+                        <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
+                        <MudNavLink Href="/logout" Icon="@Icons.Filled.Block" IconColor="Color.Warning">Đăng xuất</MudNavLink>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -27,60 +93,7 @@
     <!-- Search Wrapper Area End -->
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
-        <div class="mobile-nav">
-            <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a href="/"><img src="template/img/core-img/logo.png" alt=""></a>
-            </div>
-            <!-- Navbar Toggler -->
-            <div class="amado-navbar-toggler">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <!-- Header Area Start -->
-        <div class="col-3">
-            <header class="header-area clearfix">
-                <!-- Close Icon -->
-                <div class="nav-close">
-                    <i class="fa fa-close" aria-hidden="true"></i>
-                </div>
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html"><img src="template/img/core-img/logo.png" alt=""></a>
-                </div>
-                <!-- Amado Nav -->
-                <nav class="amado-nav">
-                    <ul>
-                        <MudNavLink Href="/" Icon="@Icons.Filled.Home" IconColor="Color.Warning">Trang Chủ</MudNavLink>
-                        <MudNavLink Href="/sanpham" class="active" Icon="@Icons.Rounded.FormatListBulleted" IconColor="Color.Warning">Sản Phẩm</MudNavLink>
-                        <MudNavLink Href="/About" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Giới Thiệu</MudNavLink>
-                        <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
-                        <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin Khách Hàng</MudNavLink>
-                        <MudNavLink Href="/chitietsanpham" class="active" Icon="@Icons.Filled.Details" IconColor="Color.Warning">Chi tiết</MudNavLink>
-                        <MudNavGroup Title="Đăng nhập" Icon="@Icons.Filled.AccountCircle" Expanded="true">
-                            <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
-                            <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
-                            <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
-                            <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
-                            <MudNavLink Href="/logout" Icon="@Icons.Filled.Block" IconColor="Color.Warning">Đăng xuất</MudNavLink>
-                        </MudNavGroup>
-                        <MudNavLink Href="/cart" Icon="@Icons.Filled.ShoppingCart" IconColor="Color.Warning">Giỏ hàng<span>(@count)</span></MudNavLink>
-                    </ul>
-                </nav>
-                <!-- Social Button -->
-                <div class="social-info d-flex justify-content-between">
-                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </div>
-            </header>
-        </div>
-        <!-- Header Area End -->
-        <!-- index -->
         @Body
-
-        <!-- index End -->
     </div>
 
     <!-- ##### Main Content Wrapper End ##### -->
@@ -200,7 +213,7 @@
             </div>
         </div>
     </footer>
-   
+
 </div>
 <MudThemeProvider />
 <MudDialogProvider />

@@ -1,5 +1,7 @@
 ﻿
 @page "/sanpham"
+@inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
+@using R4CloThes.Client.Models
 
 <div class="shop_sidebar_area">
 
@@ -84,39 +86,31 @@
         <div class="row">
 
             <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="template/img/product-img/product1.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="template/img/product-img/product2.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">Giá: $180</p>
-                            <a href="product-details.html">
-                                <h6>Tên Sản Phẩm</h6>
-                            </a>
-                            <a href="/chitietsanpham" class="btn btn-info">
-                                Xem thêm chi tiết sản phẩm
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
+            <div class="d-inline-flex">
+                <div class="card-group ml-3">
+                    @for (int i = 0; i < dssp.Count; i++)
+                    {
+                    <div class="single-products-catagory clearfix">
+                        <a href="/chitietsanpham/@dssp[i].Masanpham">
+                            <img class="w-100" src="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" alt="">
+                            <!-- Hover Content -->
+                            <div class="hover-content">
+                                <div class="line"></div>
+                                <p>Giá: @dssp[i].Gia</p>
+                                <h4>Tên sản phẩm: @dssp[i].Tensanpham</h4>
+                            </div>
+                        </a>
+                        <div class="">
                             <MudCardActions>
                                 <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
                                 <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
                             </MudCardActions>
                         </div>
                     </div>
+                    }
                 </div>
             </div>
-
+            
         </div>
 
         <div class="row">

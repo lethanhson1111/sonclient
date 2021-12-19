@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/GiamGia"
 @inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
 @using R4CloThes.Client.Models
 
@@ -7,18 +7,14 @@
     <!-- ##### Single Widget ##### -->
     <div class="widget catagory mb-50">
         <!-- Widget Title -->
-        <h6 class="widget-title mb-30">R4-CloThes</h6>
+        <h6 class="widget-title mb-30">R4 CloThes</h6>
 
         <!--  Catagories  -->
         <div class="catagories-menu">
             <ul>
-                <li class="active"><a href="#">Quần Tây Nam</a></li>
-                <li><a href="#">Quần Tây Nữ</a></li>
-                <li><a href="#">Áo Sơ Mi</a></li>
-                <li><a href="#">Quần Ngắn</a></li>
-                <li><a href="#">Áo Phong</a></li>
-                <li><a href="#">Áo Khoác</a></li>
-                <li><a href="#">Quần Jean</a></li>
+                <li><button @onclick="() => loaddata(50)">Giảm 50%</button></li>
+                <li><button @onclick="() => loaddata(30)">Giảm 30%</button></li>
+                <li><button @onclick="() => loaddata(10)">Giảm 10%</button></li>
             </ul>
         </div>
     </div>
@@ -41,49 +37,17 @@
 </div>
 <div class="col-9 mt-30">
     <div class="m-sm-auto">
-        <div class="text-center">
-            <h3 class="ml-2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm đặt biệt</h3>
-            <p style="color:black">
-                Đây là những mặt hàng đang được ưa chuộng nhất hiện nay tại shop
-            </p>
-        </div>
-        <div class="d-inline-flex">
-            <div class="card-group ml-2">
-                @for (int i = 0; i < dsspdb.Count; i++)
-                {
-                    <div class="single-products-catagory clearfix">
-                        <a href="/chitietsanpham/@dsspdb[i].Masanpham">
-                            <img src="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" alt="">
-                            <!-- Hover Content -->
-                            <div class="hover-content">
-                                <div class="line"></div>
-                                <p>Giá: @dsspdb[i].Gia</p>
-                                <h4>Tên sản phẩm: @dsspdb[i].Tensanpham</h4>
-                                <h4>Số lượt xem: @dsspdb[i].Soluotxem</h4>
-                            </div>
-                        </a>
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="text-center mt-30">
-            <h3 class="ml-2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm Giảm giá</h3>
-            <p style="color:black">
-                Đây là những mặt hàng đang được giảm giá tại shop.
-            </p>
-        </div>
         <div class="d-inline-flex">
             <div class="card-group ml-2">
                 @for (int i = 0; i < dsspgg.Count; i++)
                 {
                     <div class="single-products-catagory clearfix">
-                        <a href="/chitietsanpham/@dsspgg[i].Masanpham">
+                        <a href="/GiamGia/@dsspgg[i].Giamgia">
                             <img src="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" alt="">
                             <!-- Hover Content -->
                             <div class="hover-content">
                                 <div class="line"></div>
                                 <p>Giá: @dsspgg[i].Gia</p>
-                                <p>Giảm giá: @dsspgg[i].Giamgia%</p>
                                 <h4>Tên sản phẩm: @dsspgg[i].Tensanpham</h4>
                                 <h4>Số lượt xem: @dsspgg[i].Soluotxem</h4>
                             </div>
@@ -97,4 +61,3 @@
 <div>
     <img class="d-block2" src="https://lh3.googleusercontent.com/proxy/COHdSkx08Q1kcTWuXqU4Yhv0Y9v2LSIEga4jhHS1vcgHmywIQ3fknA-YGMXX71tJMuR_9d-MbGC5eijCDLqtBh0-jswrBtZZolml3HcBGLuHNqG6kySD5O3lY5A8RvrFYdWEIYY1WyQv7rym-2WQabgcI1wViSJEjwp6ptvD82kqO_uN" />
 </div>
-

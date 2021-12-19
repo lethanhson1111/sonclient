@@ -139,7 +139,7 @@ using R4CloThes.Client.Models.ViewModel;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 208 "E:\R402\sonclient\R4CloThes.Client\Shared\MainLayout.razor"
+#line 221 "E:\R402\sonclient\R4CloThes.Client\Shared\MainLayout.razor"
       
     public int count = 0;
 

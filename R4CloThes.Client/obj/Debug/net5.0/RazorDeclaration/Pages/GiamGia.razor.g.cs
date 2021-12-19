@@ -125,14 +125,14 @@ using R4CloThes.Client.Helpers;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "E:\R402\sonclient\R4CloThes.Client\Pages\SanPham.razor"
+#line 3 "E:\R402\sonclient\R4CloThes.Client\Pages\GiamGia.razor"
 using R4CloThes.Client.Models;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/sanpham")]
-    public partial class SanPham : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/GiamGia")]
+    public partial class GiamGia : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

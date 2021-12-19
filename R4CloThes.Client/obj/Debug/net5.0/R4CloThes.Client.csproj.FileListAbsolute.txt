@@ -285,3 +285,5 @@ E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\R4CloThes.Client.dll
 E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\ref\R4CloThes.Client.dll
 E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\R4CloThes.Client.pdb
 E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\R4CloThes.Client.genruntimeconfig.cache
+E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\RazorDeclaration\Pages\GiamGia.razor.g.cs
+E:\R402\sonclient\R4CloThes.Client\obj\Debug\net5.0\Razor\Pages\GiamGia.razor.g.cs
