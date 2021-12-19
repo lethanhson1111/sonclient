@@ -72,5 +72,32 @@ namespace R4CloThes.Client.Helpers
                 
             }
         }
+
+        public async Task<string> PutRequestAsync(string url, object postData, string token)
+        {
+            var urlapi = _config.GetSection("API")["APIUrl"].ToString();
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(postData), Encoding.UTF8, "application/json");
+                    HttpResponseMessage res = await client.PutAsync(urlapi + url, content);
+                    if (res.IsSuccessStatusCode)
+                    {
+                        return res.Content.ReadAsStringAsync().Result;
+                    }
+                    else
+                    {
+                        return "-1";
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+            }
+        }
     }
 }

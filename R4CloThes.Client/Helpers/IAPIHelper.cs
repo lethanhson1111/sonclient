@@ -10,5 +10,6 @@ namespace R4CloThes.Client.Helpers
     {
         public Task<string> PostRequestAsync(string url, object postData, string token);
         public Task<string> GetRequestAsync(string url, string token);
+        public Task<string> PutRequestAsync(string url, object postData, string token);
     }
 }

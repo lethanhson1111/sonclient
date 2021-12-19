@@ -3,82 +3,78 @@
 @inject R4CloThes.Client.Helpers.IUploadImage _uploadImage
 @inject ILocalStorageService localStorage
 @inject NavigationManager nav
+@inject ISnackbar _snachBar
 
 <div style="max-width: 600px;">
-    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+    <EditForm Model="@kh" OnValidSubmit="OnValidSubmit">
         <DataAnnotationsValidator />
         <MudCard>
             <MudGrid>
                 <MudItem>
                     <MudCardContent>
                         <MudGrid>
-                            <MudItem xs="12" sm="3">
+                            <MudItem xs="12" sm="6">
                                 <MudContainer>
-                                    <MudCardMedia Image="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" Style="height:70px; width:70px;" Class="ma-2" />
+                                    <MudPaper Class="pa-5 ma-2"><img src="@image"></MudPaper>
+                                    <InputFile id="fileInput" OnChange="UploadFiles" hidden />
+
+                                    <MudButton HtmlTag="label"
+                                               Variant="Variant.Filled"
+                                               Color="Color.Primary"
+                                               Size="MudBlazor.Size.Small"
+                                               StartIcon="@Icons.Filled.CloudUpload"
+                                               Disabled="@isLoading"
+                                               for="fileInput"
+                                               Class="m-2 text-white">
+                                        @if (isLoading)
+                                        {
+                                            <MudProgressCircular Class="ms-n1" Size="MudBlazor.Size.Small" Indeterminate="true" />
+                                            <MudText Class="ms-2 text-white">Xử lý</MudText>
+                                        }
+                                        else
+                                        {
+                                            <MudText Class="text-white">Upload</MudText>
+                                        }
+                                    </MudButton>
                                 </MudContainer>
                             </MudItem>
-                            <MudItem xs="12" sm="5">
-                                <MudTextField Label="Họ Tên Khách Hàng" Class="mt-3"
-                                              @bind-Value="model.Username" For="@(() => model.Username)" />
-                            </MudItem>
-                            <MudItem xs="12" sm="4">
-                                <MudTextField Label="Email" Class="mt-3"
-                                              @bind-Value="model.Username" For="@(() => model.Username)" />
+                            <MudItem xs="12" sm="6">
+                                <MudItem xs="12" sm="12">
+                                    <MudTextField Label="Họ Tên Khách Hàng" Class="mt-3"
+                                                  @bind-Value="kh.Tenkhachhang" For="@(() => kh.Tenkhachhang)" />
+                                </MudItem>
+                                <MudItem xs="12" sm="12">
+                                    <MudTextField Label="Email" Class="mt-3"
+                                                  @bind-Value="kh.Email" For="@(() => kh.Email)" />
+                                </MudItem>
                             </MudItem>
                         </MudGrid>
                         <MudGrid>
                             <MudItem xs="12" sm="6">
-                                <MudRadioGroup Label="Giới tính" @bind-SelectedOption="Dense_Radio">
-                                    <MudRadio Option="true" Color="Color.Primary" Dense="true">Nam</MudRadio>
-                                    <MudRadio Option="false" Color="Color.Secondary" Dense="false">Nữ</MudRadio>
+                                <MudRadioGroup Label="Giới tính" @bind-SelectedOption="sex">
+                                    <MudRadio Option="0" Color="Color.Primary" Dense="true">Nam</MudRadio>
+                                    <MudRadio Option="1" Color="Color.Secondary" Dense="false">Nữ</MudRadio>
                                 </MudRadioGroup>
                             </MudItem>
                             <MudItem xs="12" sm="6">
                                 <MudItem xs="12">
-                                    <MudDatePicker Label="Ngày Sinh" @bind-Date="date" ReadOnly="@readOnly" />
+                                    <MudDatePicker Label="Ngày Sinh" @bind-Date="kh.Ngaysinh" ReadOnly="true" />
                                 </MudItem>
                             </MudItem>
                         </MudGrid>
                         <MudTextField Label="Địa Chỉ" Class="mt-3"
-                                      @bind-Value="model.Email" For="@(() => model.Email)" />
+                                      @bind-Value="kh.Diachi" For="@(() => kh.Diachi)" />
                         <MudTextField Label="Số Điện Thoại" Class="mt-3"
-                                      @bind-Value="model.Email" For="@(() => model.Email)" />
-                        <MudTextField Label="Trạng Thái" Class="mt-3"
-                                      @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+                                      @bind-Value="kh.Sodienthoai" For="@(() => kh.Sodienthoai)" />
+                        <MudGrid>
+                            <MudItem>
+                                <MudButton Color="Color.Info" Variant="Variant.Filled" OnClick="edit">Chỉnh sửa</MudButton>
+                            </MudItem>
+                        </MudGrid>
                     </MudCardContent>
                 </MudItem>
             </MudGrid>
         </MudCard>
     </EditForm>
 </div>
-@code {
-    RegisterAccountForm model = new RegisterAccountForm();
-    bool success;
 
-    public class RegisterAccountForm
-    {
-        public string Username { get; set; }
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
-        public string Password2 { get; set; }
-    }
-
-    private void OnValidSubmit(EditContext context)
-    {
-        success = true;
-        StateHasChanged();
-    }
-
-}
-@code {
-    public bool Dense_Radio { get; set; } = true;
-}
-@code {
-    MudDatePicker _picker;
-    DateTime? date = DateTime.Today;
-    private bool autoClose;
-    private bool readOnly;
-}

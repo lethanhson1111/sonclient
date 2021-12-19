@@ -53,7 +53,7 @@ namespace R4CloThes.Client.Helpers
                 await _localStorage.SetItemAsync("cart", cart);
             }
             _snackBar.Add($"Đã thêm {sanPhamGioHang.SanPham.Tensanpham} vào giỏ hàng!", Severity.Success);
-            OnChange?.Invoke();
+            OnChange.Invoke();
         }
     }
 }

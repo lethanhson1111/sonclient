@@ -5,7 +5,6 @@
 @inject ICartService cartService
 @implements IDisposable
 
-
 <div class="page">
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -54,16 +53,22 @@
                         <MudNavLink Href="/" Icon="@Icons.Filled.Home" IconColor="Color.Warning">Trang Chủ</MudNavLink>
                         <MudNavLink Href="/sanpham" class="active" Icon="@Icons.Rounded.FormatListBulleted" IconColor="Color.Warning">Sản Phẩm</MudNavLink>
                         <MudNavLink Href="/About" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Giới Thiệu</MudNavLink>
-                        <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
-                        <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin Khách Hàng</MudNavLink>
-                        <MudNavLink Href="/chitietsanpham" class="active" Icon="@Icons.Filled.Details" IconColor="Color.Warning">Chi tiết</MudNavLink>
-                        <MudNavGroup Title="Đăng nhập" Icon="@Icons.Filled.AccountCircle" Expanded="true">
-                            <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
-                            <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
-                            <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
-                            <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
+                        @if (token != null)
+                        {
+                            <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
+                            <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin Khách Hàng</MudNavLink>
                             <MudNavLink Href="/logout" Icon="@Icons.Filled.Block" IconColor="Color.Warning">Đăng xuất</MudNavLink>
-                        </MudNavGroup>
+                        }
+                        @if (token == null)
+                        {
+                            <MudNavGroup Title="Đăng nhập" Icon="@Icons.Filled.AccountCircle" Expanded="true">
+                                <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
+                                <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
+                                <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
+
+                            </MudNavGroup>
+                        }
+                        <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
                         <MudNavLink Href="/cart" Icon="@Icons.Filled.ShoppingCart" IconColor="Color.Warning">Giỏ hàng<span>(@count)</span></MudNavLink>
                     </ul>
                 </nav>
@@ -91,7 +96,6 @@
                 <!-- Newsletter Text -->
                 <div class="col-12 col-lg-6 col-xl-7">
                     <div class="newsletter-text mb-100">
-                        <h2>Đăng ký để được giảm <span>20%</span></h2>
                         <p>Shop R4-CloThes </p>
                     </div>
                 </div>
@@ -200,37 +204,33 @@
             </div>
         </div>
     </footer>
-   
 </div>
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 @code{
     public int count = 0;
+    public string token = null;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            var cart = await localStorage.GetItemAsync<List<SanPhamGioHang>>("cart");
-            if (cart == null)
-            {
-                count = 0;
-            }
-            else
-            {
-                count = cart.Count;
-            }
-        }
+        List<SanPhamGioHang> cart = await localStorage.GetItemAsync<List<SanPhamGioHang>>("cart");
+        count = cart != null ? cart.Count : 0;
+        Console.WriteLine("aaa");
+        token = await localStorage.GetItemAsync<string>("token");
+        
         StateHasChanged();
     }
 
     protected override void OnInitialized()
     {
         cartService.OnChange += StateHasChanged;
+
     }
     public void Dispose()
     {
         cartService.OnChange -= StateHasChanged;
+
     }
+
 }

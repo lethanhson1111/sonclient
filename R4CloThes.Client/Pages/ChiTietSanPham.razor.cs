@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using R4CloThes.Client.Models.ViewModel;
 using R4CloThes.Client.Models;
 using MudBlazor;
-
+using R4Clothes.Client.Models;
 
 namespace R4CloThes.Client.Pages
 {
@@ -18,12 +18,14 @@ namespace R4CloThes.Client.Pages
         public int soLuongMua { get; set; } = 1;
         public double SauGiamGia = 0;
         public SanPhamViewModel sanPham = new SanPhamViewModel();
+        public List<DanhGiaSanPham> dgsp = new List<DanhGiaSanPham>();
 
         protected override async Task OnInitializedAsync()
         {
             var res = await _apihelper.GetRequestAsync("sanphams/" + id, null);
             sanPham = JsonConvert.DeserializeObject<SanPhamViewModel>(res);
             SauGiamGia = sanPham.Gia - (sanPham.Gia * (double)sanPham.Giamgia / 100);
+
         }
 
         private async Task AddToCart()
