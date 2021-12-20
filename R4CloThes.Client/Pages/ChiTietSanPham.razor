@@ -3,6 +3,7 @@
 @inject ILocalStorageService localStorage
 @inject ISnackbar _snackbar
 @inject ICartService _cartService
+@inject NavigationManager nav
 
     <style>
         import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
@@ -144,8 +145,15 @@
                         <!-- Ratings & Review -->
                         <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                             <MudCardActions>
-                                <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
-                                <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+                                @if (checkFav)
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Error" />
+                                }
+                                else
+                                {
+                                    <MudIconButton Icon="@Icons.Material.Filled.FavoriteBorder" Color="Color.Default" />
+                                }
+                                <MudIconButton OnClick="OpenDialog" Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
                             </MudCardActions>
                         </div>
                         <!-- Avaiable -->
@@ -169,22 +177,11 @@
                 <MudGrid Justify="Justify.Center">
                     <MudItem>
                         <MudPaper Style="height:500px;width:1000px;">
-                            <MudGrid>
-                                <MudItem Class="mt-auto; ml-5">
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">Tất cả</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">5 trên 5 sao</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">4 trên 5 sao</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">3 trên 5 sao</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">2 trên 5 sao</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">1 trên 5 sao</MudButton>
-                                    <MudButton Variant="Variant.Outlined" Color="Color.Warning">0 trên 5 sao</MudButton>
-                                </MudItem>
-                            </MudGrid>
                             <hr />
                             <MudGrid>
                                 <MudItem>
                                     <MudContainer Class="ml-auto">
-                                        <MudAvatar Image="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" Style="height:45px; width:45px;" Class="ma-2" />
+                                        <MudAvatar Image="" Style="height:45px; width:45px;" Class="ma-2" />
                                     </MudContainer>
                                 </MudItem>
                                 <MudItem>
@@ -197,25 +194,25 @@
                                 </MudItem>
                             </MudGrid>
                             <hr />
-                            <MudGrid>
-                                <MudItem xs="1">
-                                    <MudContainer Class="ml-auto mt-3">
-                                        <MudAvatar Image="https://duhocminhkhang.com/wp-content/uploads/2020/01/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-%C4%91eo-m%E1%BA%AFt-k%C3%ADnh-c%E1%BB%B1c-cute-10-1.jpg" Style="height:45px; width:45px;" Class="ma-2" />
-                                    </MudContainer>
-                                </MudItem>
-                                <MudItem xs="11">
-                                    <div class="mt-3 ml-0 d-flex">
-                                        <div>
-                                            <MudText>Tên khách hàng</MudText>
-                                            <MudText>Thông tin bình luận</MudText>
-                                            <MudLink Href="#">Thích</MudLink>
-                                            <MudLink Class="ml-2" Href="#">Phản hồi</MudLink>
+                            @foreach (var item in dsdanhgia)
+                            {
+                                <MudGrid>
+                                    <MudItem xs="1">
+                                        <MudContainer Class="ml-auto mt-3">
+                                            <img src="https://res.cloudinary.com/r4clothes/image/upload/@item.Hinh" width="100px" height="100px" alt="ava" />
+                                        </MudContainer>
+                                    </MudItem>
+                                    <MudItem xs="11">
+                                        <div class="mt-3 ml-0 d-flex">
+                                            <div>
+                                                <MudText>@item.Tenkhachhang</MudText>
+                                                <MudText>@item.NoiDung</MudText>
+                                            </div>
                                         </div>
-                                    </div>
-                                </MudItem>
-                            </MudGrid>
-                        </MudPaper>
-
+                                    </MudItem>
+                                </MudGrid>
+                            }
+                            </MudPaper>
                     </MudItem>
                 </MudGrid>
             </MudItem>

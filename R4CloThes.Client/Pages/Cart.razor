@@ -247,11 +247,11 @@ else
         </div>
         <div class="product-price">@item.SanPham.Gia</div>
         <div class="product-quantity">
-            <input type="number" min="1" @bind-value:event="onchange" @oninput="() => UpdateCart(item)" @bind-value="@item.SoLuongMua">
+            <input type="number" min="1" @bind-value:event="onchange" @oninput="() => UpdateCart(item)" @bind-value="@item.SoLuong">
         </div>
         <div class="product-line-price">@TinhTien(item)</div>
         <div class="product-removal">
-            | <button class="remove-product">
+            | <button class="remove-product" @onclick="() => xoasp(item.SanPham.Masanpham)">
                 Xóa
             </button>
         </div>

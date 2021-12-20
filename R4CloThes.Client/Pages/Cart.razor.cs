@@ -19,19 +19,19 @@ namespace R4CloThes.Client.Pages
         private async Task UpdateCart(SanPhamGioHang sp)
         {
             int index = listSanPham.IndexOf(sp);
-            listSanPham[index].SoLuongMua = sp.SoLuongMua;
+            listSanPham[index].SoLuong = sp.SoLuong;
             await localStorage.SetItemAsync("cart", listSanPham);
         }
         private double TinhTien(SanPhamGioHang sp)
         {
-            return sp.SanPham.Gia * (double)sp.SoLuongMua;
+            return sp.SanPham.Gia * (double)sp.SoLuong;
         }
         private double TongTien()
         {
             double tt = 0;
             foreach (var item in listSanPham)
             {
-                tt += item.SanPham.Gia * item.SoLuongMua;
+                tt += item.SanPham.Gia * item.SoLuong;
             }
             return tt;
         }
@@ -50,6 +50,22 @@ namespace R4CloThes.Client.Pages
                 await localStorage.RemoveItemAsync("cart");
             }
             isLoading = false;
+        }
+        private async Task xoasp(int idsanpham)
+        {
+            List<SanPhamGioHang> cart = await localStorage.GetItemAsync<List<SanPhamGioHang>>("cart");
+            var itemrm = cart.Single(r => r.SanPham.Masanpham == idsanpham);
+            cart.Remove(itemrm);
+            if (cart.Count == 0)
+            {
+                listSanPham = null;
+                await localStorage.RemoveItemAsync("cart");
+            }
+            else
+            {
+                await localStorage.SetItemAsync("cart", cart);
+            }
+            nav.NavigateTo("/cart", true);
         }
     }
 }

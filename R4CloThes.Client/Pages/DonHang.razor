@@ -212,23 +212,24 @@
             <label class="product-ngaydat">Ngày Đặt</label>
             <label class="product-trangthai">Trạng Thái</label>
             <label class="product-line-price">Tổng Tiền</label>
+
         </div>
         @foreach (var item in hoadon)
         {
-            <div class="product">
-                <div class="product-name">
-                    <div class="product-title">@item.Mahoadon</div>
-                </div>
-                <div class="product-ngaydat">
-                    <div class="product-title"> @item.Ngaydat</div>
-                </div>
-                <div class="product-trangthai">
-                    <div class="product-title">@item.Trangthai</div>
-                </div>
-                <div class="product-removal">
-                    <a class="btn btn-info product-title" href="/chitietdonhang">Chi Tiết</a>
-                </div>
-                <div class="product-line-price">@item.Tongtien</div>
-            </div>
+    <div class="product">
+        <div class="product-name">
+            <div class="product-title">@item.Mahoadon</div>
+        </div>
+        <div class="product-ngaydat">
+            <div class="product-title"> @item.Ngaydat</div>
+        </div>
+        <div class="product-trangthai">
+            <div class="product-title">@item.Trangthai</div>
+        </div>
+        <div class="product-line-price">@item.Tongtien</div>
+        <div class="product-removal">
+            <a class="btn btn-info product-title" href="/chitietdonhang/@item.Mahoadon">Chi Tiết</a>
+        </div>
+    </div>
         }
     </div>

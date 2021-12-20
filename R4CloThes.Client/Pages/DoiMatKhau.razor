@@ -2,6 +2,7 @@
 @inject IAPIHelper _IAPIHelper
 @inject ILocalStorageService _LocalService
 @inject NavigationManager _Nav
+
 <style>
     
 .login-block{
@@ -59,7 +60,7 @@ padding : 50px 0;
                             <input @bind="xacnhanmatkhau" type="password" class="form-control" placeholder="">
                         </div>
                         <div class="form-check">
-                            <button @onclick="doimatkhau" class="btn btn-login float-right">Đổi Mật Khẩu</button>
+                            <button @onclick="doimatkhau" disabled="@process" class="btn btn-login float-right">Đổi Mật Khẩu</button>
                         </div>
 
                     </form>
