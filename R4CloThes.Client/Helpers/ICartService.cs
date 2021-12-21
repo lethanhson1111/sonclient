@@ -42,7 +42,7 @@ namespace R4CloThes.Client.Helpers
                 {
                     if (item.SanPham.Masanpham == sanPhamGioHang.SanPham.Masanpham)
                     {
-                        item.SoLuongMua += sanPhamGioHang.SoLuongMua;
+                        item.SoLuong += sanPhamGioHang.SoLuong;
                         check = true;
                     }
                 }

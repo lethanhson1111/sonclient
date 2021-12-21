@@ -1,6 +1,10 @@
-﻿@inject HttpClient Client
-@page "/chitietdonhang"
+﻿
+@page "/chitietdonhang/{id}"
 @inject ILocalStorageService localStorage
+@inject ISnackbar _snackbar
+@inject ICartService _cartService
+@inject NavigationManager nav
+@inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
 
 <style>
     .product-image {
@@ -12,6 +16,7 @@
         float: left;
         width: 15%;
     }
+
     .product-day {
         float: left;
         width: 15%;
@@ -207,28 +212,24 @@
     }
     }
 </style>
-<div class="cart-table-area mt-100">
+<MudTable Items="@sanPhamCTs">
+    <HeaderContent>
 
-    <div class="column-labels">
-        <label class="product-image">Khách Hàng</label>
-        <label class="product-ngaydat">Ngày Đặt</label>
-        <label class="product-trangthai">Trạng Thái</label>
-        <label class="product-day">Ngày Đặt</label>
-        <label class="product-line-price">Tổng TIền</label>
-    </div>
+        <MudTh>Tên Sản Phẩm </MudTh>
+        <MudTh>Hình</MudTh>
+        <MudTh>Số Lượng </MudTh>
+        <MudTh> Giá</MudTh>
 
-    <div class="product">
-        <div class="product-image">
-            <img src="https://anhdepbonphuong.com/wp-content/uploads/2016/12/hinh-nen-dep-cho-may-tinh-nature-wallpapers-nature-wallpaper-latest-beautiful-wallpapers.jpg" />
+    </HeaderContent>
 
-        </div>
-        <div class="product-ngaydat">
-            <div class="product-title"> 25/11/2021</div>
-        </div>
-        <div class="product-trangthai">
-            <div class="product-title"> Mới Đặt</div>
-        </div>
-        <div class="product-day">24/11/2021</div>
-        <div class="product-line-price">25.98</div>
-    </div>
-</div>
+    <RowTemplate>
+
+        <MudTd DataLabel="Maloai">@context.TenSanPham</MudTd>
+        <MudTd DataLabel="Tenloai"><img src="https://res.cloudinary.com/r4clothes/image/upload/@context.Hinh" width="100px" height="100px" alt="Alternate Text" /></MudTd>
+        <MudTd DataLabel="Tenloai">@context.SoLuongMua</MudTd>
+        <MudTd DataLabel="Tenloai">@context.Gia</MudTd>
+
+
+    </RowTemplate>
+
+</MudTable>

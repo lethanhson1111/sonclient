@@ -42,7 +42,7 @@ namespace R4CloThes.Client
             services.AddTransient<IUploadImage, UploadImage>();
             services.AddTransient<IAPIHelper, APIHelper>();
             services.AddScoped<ICartService, CartService>();
-
+            services.AddHttpClient();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
             services.AddMudServices(config =>

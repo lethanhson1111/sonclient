@@ -2,10 +2,16 @@
 @inject R4CloThes.Client.Helpers.IAPIHelper _apiHelper
 @using R4CloThes.Client.Models
 
-<div class="col-9 mt-30">
+@if (dssp == null)
+{
+    <p>Loading ...</p>
+}
+else
+{
+<div class="mt-30">
     <div class="m-sm-auto">
         <div class="text-center">
-            <h3 class="h2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm đặt biệt</h3>
+            <h3 class="h2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm đặc biệt</h3>
             <p style="color:black">
                 Đây là những mặt hàng đang được ưa chuộng nhất hiện nay tại shop
             </p>
@@ -16,24 +22,43 @@
                 {
                     <div class="single-products-catagory clearfix">
                         <a href="/chitietsanpham/@dssp[i].Masanpham">
-                            <img src="https://res.cloudinary.com/r4clothes/image/upload/@dssp[i].Hinh" alt="">
+                            <img src="https://res.cloudinary.com/r4clothes/image/upload/@dssp[i].Hinh" alt="productImg">
                             <!-- Hover Content -->
                             <div class="hover-content">
                                 <div class="line"></div>
-                                <p>Giá: @dssp[i].Gia</p>
+                                <p>Giá: @string.Format("{0:#,##0.00}", dsspgg[i].Gia)đ</p>
                                 <h4>@dssp[i].Tensanpham</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                }
+            </div>
+            </div>
+        <div class="text-center mt-3">
+            <h3 class="h2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm giảm giá</h3>
+            <p style="color:black">
+                Đây là những mặt hàng đang được giảm giá đặc biệt trong  ngày hôm nay
+            </p>
+        </div>
+        <div class="d-inline-flex ml-30 ">
+            <div class="card-group">
+                @for (int i = 0; i < dsspgg.Count; i++)
+                {
+                    <div class="single-products-catagory clearfix">
+                        <a href="/chitietsanpham/@dsspgg[i].Masanpham">
+                            <img src="https://res.cloudinary.com/r4clothes/image/upload/@dsspgg[i].Hinh" alt="">
+                            <!-- Hover Content -->
+                            <div class="hover-content">
+                                <div class="line"></div>
+                                <p>Giá: @string.Format("{0:#,##0.00}", dsspgg[i].Gia)đ</p>
+                                <h4>@dsspgg[i].Tensanpham</h4>
                             </div>
                         </a>
                     </div>
                 }
             </div>
         </div>
-        <div class="text-center">
-            <h3 class="h2" style="background-color:#ff6a00; color:aliceblue">Sản phẩm bán chạy</h3>
-            <p style="color:black">
-                Đây là những mặt hàng bán chạy nhất tại shop.
-            </p>
-        </div>
     </div>
 </div>
-
+}

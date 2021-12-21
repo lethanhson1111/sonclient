@@ -29,7 +29,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="/"><img src="template/img/core-img/logo.png" alt=""></a>
+                <a href="/" style="font-size:14px">R4 Clothes</a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -45,7 +45,7 @@
                 </div>
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="/"><img src="" alt=""></a>
+                    <a href="/"><img src="logo_r4.png" alt=""></a>
                 </div>
                 <!-- Amado Nav -->
                 <nav class="amado-nav">
@@ -57,6 +57,7 @@
                         {
                             <MudNavLink Href="/donhang" class="active" Icon="@Icons.Filled.Check" IconColor="Color.Warning">Đơn Hàng</MudNavLink>
                             <MudNavLink Href="/thongtin" class="active" Icon="@Icons.Filled.People" IconColor="Color.Warning">Thông Tin Khách Hàng</MudNavLink>
+                            <MudNavLink Href="/doimk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Đổi mật khẩu</MudNavLink>
                             <MudNavLink Href="/logout" Icon="@Icons.Filled.Block" IconColor="Color.Warning">Đăng xuất</MudNavLink>
                         }
                         @if (token == null)
@@ -64,27 +65,23 @@
                             <MudNavGroup Title="Đăng nhập" Icon="@Icons.Filled.AccountCircle" Expanded="true">
                                 <MudNavLink Href="/login" Icon="@Icons.Rounded.SupervisedUserCircle" IconColor="Color.Warning">Đăng Nhập</MudNavLink>
                                 <MudNavLink Href="/Dangky" Icon="@Icons.Filled.LockOutline" IconColor="Color.Warning">Đăng Ký</MudNavLink>
-                                <MudNavLink Href="/doimk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Đổi Mật Khẩu</MudNavLink>
+                                <MudNavLink Href="/quenmk" Icon="@Icons.Filled.ScreenLockRotation" IconColor="Color.Warning">Quên mật khẩu</MudNavLink>
 
                             </MudNavGroup>
                         }
-                        <MudNavLink Href="/quenmk" Icon="@Icons.Filled.LockOpen" IconColor="Color.Warning">Quên Mật Khẩu</MudNavLink>
                         <MudNavLink Href="/cart" Icon="@Icons.Filled.ShoppingCart" IconColor="Color.Warning">Giỏ hàng<span>(@count)</span></MudNavLink>
                     </ul>
                 </nav>
                 <!-- Social Button -->
-                <div class="social-info d-flex justify-content-between">
-                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </div>
+                
             </header>
+        </div>
+        <div class="col-9">
+            @Body
         </div>
         <!-- Header Area End -->
         <!-- index -->
-        @Body
-
+        
         <!-- index End -->
     </div>
 
@@ -121,7 +118,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="template/img/core-img/logo2.png" alt=""></a>
+                            <a href="index.html"><img src="logo_r4.png" alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                     </div>
@@ -151,7 +148,7 @@
                                             <!-- Grid column -->
                                             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                                                 <!-- Links -->
-                                                <h6 class="text-light fw-bold">Products</h6>
+                                                <h6 class="text-light fw-bold">Danh mục</h6>
                                                 <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                                     style="width: 60px; background-color: mediumspringgreen; height: 2px" />
                                                 <p>
@@ -169,7 +166,7 @@
                                             <!-- Grid column -->
                                             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                                                 <!-- Links -->
-                                                <h6 class="text-light fw-bold">Useful links</h6>
+                                                <h6 class="text-light fw-bold">Tiện ích</h6>
                                                 <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                                     style="width: 60px; background-color: mediumspringgreen; height: 2px" />
                                                 <p>
@@ -184,7 +181,7 @@
                                             <!-- Grid column -->
                                             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 ">
                                                 <!-- Links -->
-                                                <h6 class="text-light fw-bold">Contact</h6>
+                                                <h6 class="text-light fw-bold">Liên hệ</h6>
                                                 <hr class="mb-4 mt-0 d-inline-block mx-auto"
                                                     style="width: 60px; background-color: mediumspringgreen; height: 2px" />
                                                 <p class="text-light"> Công Viên Phần Mềm Quang Trung, Quận 12,Tp HCM</p>
@@ -206,7 +203,12 @@
     </footer>
 </div>
 <MudThemeProvider />
-<MudDialogProvider />
+<MudDialogProvider FullWidth="true" 
+                   MaxWidth="MaxWidth.ExtraSmall" 
+                   CloseButton="true" 
+                   DisableBackdropClick="true" 
+                   NoHeader="true" 
+                   Position="DialogPosition.Center" />
 <MudSnackbarProvider />
 @code{
     public int count = 0;
@@ -216,9 +218,8 @@
     {
         List<SanPhamGioHang> cart = await localStorage.GetItemAsync<List<SanPhamGioHang>>("cart");
         count = cart != null ? cart.Count : 0;
-        Console.WriteLine("aaa");
         token = await localStorage.GetItemAsync<string>("token");
-        
+
         StateHasChanged();
     }
 

@@ -114,10 +114,10 @@
                     <form class="login-form">
                         <div class="form-group">
                             <label for="exampleInputEmail1" class="text-uppercase">Email</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" @bind="email" placeholder="">
                         </div>
                         <div class="form-check">
-                            <button type="submit" class="btn btn-login float-right">Xác Nhận</button>
+                            <button @onclick="xacnhan" class="btn btn-login float-right">Xác Nhận</button>
                         </div>
 
                     </form>

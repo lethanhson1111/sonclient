@@ -1,4 +1,5 @@
-﻿using R4CloThes.Client.Models;
+﻿using R4Clothes.Client.Models;
+using R4CloThes.Client.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace R4Clothes.Client.Models
+namespace R4CloThes.Client.Models
 {
     public class ChiaSe
     {
