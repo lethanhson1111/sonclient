@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using R4CloThes.Client.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace R4CloThes.Client.Pages
 {
     public partial class Index
     {
+        
         List<SanPhamViewModel> dssp = new List<SanPhamViewModel>();
         List<SanPhamViewModel> dsspgg = new List<SanPhamViewModel>();
         protected override async Task OnInitializedAsync()

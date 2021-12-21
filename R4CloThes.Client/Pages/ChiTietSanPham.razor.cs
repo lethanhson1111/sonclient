@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,15 +17,23 @@ namespace R4CloThes.Client.Pages
         public string id { get; set; }
         [Inject] public IDialogService dialogService { get; set; }
         public string token { get; set; }
+        public bool isLogin = false;
+        public bool isLoading = false;
         public bool checkFav = false;
+        public string mau = "Color.Default";
+        public string icon = "@Icons.Filled.FavoriteBorder";
         public string idkhachhang { get; set; }
+        public string imgKhachhang { get; set; }
         public int soLuongMua { get; set; } = 1;
         public double SauGiamGia = 0;
         public SanPhamViewModel sanPham = new SanPhamViewModel();
         public List<DanhGiaSanPhamReturn> dsdanhgia = new List<DanhGiaSanPhamReturn>();
-
+        public KhachHang khachhang = new KhachHang();
+        public DanhGiaSanPham dgsp = new DanhGiaSanPham();
         protected override async Task OnInitializedAsync()
         {
+            isLoading = true;
+            await LoadKhachHang();
             idkhachhang = await localStorage.GetItemAsync<string>("khachhangid");
             token = await localStorage.GetItemAsync<string>("token");
             if (idkhachhang != null)
@@ -36,6 +44,7 @@ namespace R4CloThes.Client.Pages
                     if (re == "true")
                     {
                         checkFav = true;
+                        icon = "@Icons.Filled.Favorite";
                     }
                 }
             }
@@ -48,17 +57,51 @@ namespace R4CloThes.Client.Pages
             {
                 dsdanhgia = JsonConvert.DeserializeObject<List<DanhGiaSanPhamReturn>>(ros);
             }
+            isLoading = false;
+        }
+        private async Task BinhLuan()
+        {
+            isLoading = true;
+            dgsp.MaDanhGiaSanPham = 0;
+            dgsp.Makhachhang = int.Parse(idkhachhang);
+            dgsp.Masanpham = int.Parse(id);
+            dgsp.Thoigian = DateTime.Now;
+            var res = await _apihelper.PostRequestAsync("danhgiasanphams", dgsp, token);
+            if (res != "-1")
+            {
+                _snackbar.Add("Đã thêm thành công!", Severity.Success);
+
+            }
             else
             {
-                nav.NavigateTo("/");
+                _snackbar.Add("Lỗi server", Severity.Error);
+            }
+            isLoading = false;
+        }
+        private async Task LoadKhachHang()
+        {
+            var res = await _apihelper.GetRequestAsync("khachhangs/" + idkhachhang, token);
+            if (res != "-1")
+            {
+                isLogin = true;
+                khachhang = JsonConvert.DeserializeObject<KhachHang>(res);
+                imgKhachhang = "https://res.cloudinary.com/r4clothes/image/upload/" + khachhang.Hinh;
             }
         }
         private async Task AddToCart()
         {
             await _cartService.AddToCart(new SanPhamGioHang {SanPham = sanPham, SoLuong = soLuongMua });
         }
+        private async Task AddFav()
+        {
+            if (checkFav == false)
+            {
+                //var res = await _apihelper.PostRequestAsync("")
+            }
+        }
         private async Task chiase()
         {
+
         }
         private async Task OpenDialog()
         {
